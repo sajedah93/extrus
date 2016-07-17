@@ -18,6 +18,9 @@ node_modules/
 db/
 client/lib
 
+# Build files
+dist/
+
 # Floobits
 .floo
 .floobit

@@ -9,34 +9,18 @@ var Schema = mongoose.Schema ;
 
 // This is the User Table .
 var userSchema = new Schema({
-	username : { type : String , required : true , index : { unique : true }},
-	password : {type : String , required: true},
-	email  : {type:  String ,required: true},
-	firstName  : { type : String , required : true} , 
-	lastName : { type : String , required : true} ,
-	age : { type : Number , required : true } , 
-	cohortNumber : { type: Number , required : true},
+	username : { type : String , required: true , index : { unique : true }},
+	password : {type : String , required: true },
+	email  : {type:  String },
+	firstName  : { type : String , required: true } , 
+	lastName : { type : String , required: true } ,
+	age : { type : Number } , 
+	cohortNumber : { type: Number , required: true },
 	image : {type : String }  ,
 	About : { type : String } ,  
 	pairReflect :  {type : Number},
 	salt: { type : String }
 });
-
-
-
-userSchema.method.comparePasswords = function(candidatePassword){
-	var savedPassword = this.password;
-	return Q.promise(function(resolve,reject){
-		bcrypt.compare( candidatePassword , savedPassword, function(err,isMatch){
-		  if (err) {
-	        reject(err);
-	      } else {
-	        resolve(isMatch);
-	      }
-		})
-	})
-}
-
 
 userSchema.pre('save', function (next) {
   var user = this;
@@ -57,6 +41,7 @@ userSchema.pre('save', function (next) {
         return next(err);
       }
       // override the cleartext password with the hashed one
+  
       user.password = hash;
       user.salt = salt;
       next();
@@ -64,11 +49,18 @@ userSchema.pre('save', function (next) {
   });
 });
 
-
-
-
 // Setting up the user Model . 
 var User = mongoose.model('User' , userSchema);
+User.comparePassword = function(candidatePassword, savedPassword, res, cb){
+	bcrypt.compare( candidatePassword, savedPassword, function(err, isMatch){
+		if(err){
+			res.status(500).send('Error');
+		} else if(cb){
+			cb(isMatch);
+		}
+	});
+};
+
 module.exports = User;
 
 

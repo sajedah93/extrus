@@ -7,12 +7,14 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
+        // src: ['client/**/*.js'],
+        // dest: 'dist/<%= pkg.name %>.js'
       }
     },
 
     nodemon: {
       dev: {
-        script: 'server.js'
+        script: 'server/server.js'
       }
     },
 
@@ -22,7 +24,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'public/dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
+          'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
         }
       }
     },
@@ -30,19 +32,13 @@ module.exports = function(grunt) {
     jshint: {
       files: [
         'Gruntfile.js',
-        'app/**/*.js',
-        'public/**/*.js',
-        'lib/**/*.js',
-        './*.js',
-        'spec/**/*.js'
-        // Add filespec list here
+        'client/**/*.js'
       ],
       options: {
         force: 'true',
         jshintrc: '.jshintrc',
         ignores: [
-          'public/lib/**/*.js',
-          'public/dist/**/*.js'
+          'dist/**/*.js'
         ]
       }
     },
@@ -53,7 +49,7 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'public/dist/style.min.css': 'public/style.css'
+          'dist/style.min.css': 'client/styles/style.css'
         }
       }
     },
@@ -61,12 +57,11 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: [
-          'public/client/**/*.js',
-          'public/lib/**/*.js',
+          //'client/**/*.js'
         ],
         tasks: [
-          'concat',
-          'uglify'
+          // 'concat',
+          // 'uglify'
         ]
       },
       css: {
@@ -115,7 +110,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', [
     'jshint',
-    'mochaTest'
   ]);
 
   grunt.registerTask('build', [
@@ -126,8 +120,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
-      grunt.task.run([ 'shell:prodServer' ]);
       // add your production server task here
+      grunt.task.run([ 'shell:prodServer' ]);
     } else {
       grunt.task.run([ 'server-dev' ]);
     }

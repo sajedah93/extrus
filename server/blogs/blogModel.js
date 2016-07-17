@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 // Blogs table here.
 var blogSchema = new Schema({
-	from : {type: String , required : true},
+	from : {type: String , required: true},
 	title : {type : String , required: true},
 	blog : {type : String , required: true}
 });
