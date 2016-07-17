@@ -10,11 +10,8 @@
     "Sajedah Yousef <yousef.sajedah93@gmail.com>"
   ],
   "scripts": {
-    "test": "gulp karma",
-    "start": "gulp",
     "lint": "jscs ./"
   },
-  "pre-commit": "lint",
   "repository": {
     "type": "git",
     "url": "https://github.com/extrus/extrus.git"
@@ -44,6 +41,7 @@
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^1.0.8",
     "body-parser": "^1.4.3",
     "express": "^4.4.5",
     "jwt-simple": "^0.2.0",
