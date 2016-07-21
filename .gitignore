@@ -28,4 +28,4 @@ dist/
 .flooignore
 
 ## API keys ##
-client/config/youtube.js
+client/config/api_keys.js

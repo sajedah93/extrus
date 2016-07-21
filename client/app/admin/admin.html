@@ -1,0 +1,60 @@
+<h3>
+  <div>
+    <label for="username" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Username</label>
+    <input name='username' type="text"
+      ng-model="admin.username"
+      placeholder="Enter your username here" class="editInput"/><br><br>
+  </div>
+  <div>
+    <label for="password" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Password</label>
+    <input name='password' type="password"
+      ng-model="admin.password"
+      placeholder="Enter your password here" class="editInput"/><br><br>
+  </div>
+  <div>
+    <br>
+    <label ng-show="showError===true" ng-hide="showError===false" style="color:red;">{{errorMsg}}</label>
+  </div>
+  <input type="button" value="Login" ng-click="login()"/>
+  <br>
+  <br>
+  <div ng-show="giveAccess===true" ng-hide="giveAccess===false">
+    <div>
+    <label for="username" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Username</label>
+    <input name='username' type="text"
+      ng-model="user.username"
+      placeholder="Enter username here" class="editInput"/><br><br>
+    </div>
+    <div>
+    <label for="password" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Password</label>
+    <input name='password' type="text"
+      ng-model="user.password"
+      placeholder="Enter password here" class="editInput"/><br><br>
+    </div>
+    <div>
+    <label for="firstName" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;First Name</label>
+    <input name='firstName' type="text"
+      ng-model="user.firstName"
+      placeholder="Enter firstName here" class="editInput"/><br><br>
+    </div>
+    <div>
+    <label for="lastName" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Last Name</label>
+    <input name='lastName' type="text"
+      ng-model="user.lastName"
+      placeholder="Enter lastName here" class="editInput"/><br><br>
+    </div>
+    <div>
+    <label for="cohortNumber" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Cohort Number</label>
+    <input name='cohortNumber' type="text"
+      ng-model="user.cohortNumber"
+      placeholder="Enter cohort number here" class="editInput"/><br><br>
+    </div>
+    <div>
+    <label for="image" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Image Link</label>
+    <input name='image' type="text"
+      ng-model="user.image"
+      placeholder="Enter image link here" class="editInput"/><br><br>
+    </div>
+    <input type="button" value="Add User" ng-click="addUser()"/>
+  </div>
+</h3>

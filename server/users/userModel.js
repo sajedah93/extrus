@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 var bluebird = require('bluebird');
-var Q = require('q');
 var SALT_WORK_FACTOR = 10;
 
 
@@ -44,7 +43,6 @@ userSchema.pre('save', function (next) {
         return next(err);
       }
       // override the cleartext password with the hashed one
-
       user.password = hash;
       user.salt = salt;
       next();

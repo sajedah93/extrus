@@ -4,14 +4,50 @@
     <meta charset="utf-8" />
     <title>RBKme</title>
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="lib/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   </head>
-  <body>
-    <h1>TESTING</h1>
+  <body ng-controller="mainCtrl" style="background-color: grey;">
+    <div class="container">
+        <div class="col-lg-10 col-md-10 col-sm-10">
+            <img style="margin-left:5em; margin-top:5em" src="http://rbk.org/wp-content/uploads/2016/03/znewlogo.png" height="150">
+        </div>
+        <div ng-switch on="loggedIN" class="col-lg-2 col-md-2 col-sm-2" style="margin-top: 4%">
+            <input type="button" class="btn myBtn" ng-switch-when="false" ng-click="signin($event)" value="Sign in"/>
+            <input type="button" class="btn myBtn" ng-switch-when="true" ng-click="signout($event)" value="Sign out"/>
+            <a class="btn myBtn" href="#/">Home</a>
+            <a class="btn myBtn" href="#/blogs">Blogs</a>
+            <a class="btn myBtn" ng-switch-when="true" href="#/messages">Messages</a>
+        </div>
+    </div>
 
-    <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
-    <div ng-view></div>
+    <div ng-view class="examples"></div>
+    <center style="background-color: grey;">
+        <div style="color:white; width:2% ">
+            <h2> RBK </h2>  
+        </div>
+    </center>
 
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-aria/angular-aria.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-material/angular-material.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="app/auth/auth.js"></script>
+    <script src="app/blog/blog.js"></script>
+    <script src="app/blog/newBlog.js"></script>
+    <script src="app/messages/messages.js"></script>
+    <script src="app/messages/newMsg.js"></script>
+    <script src="app/home/home.js"></script>
+    <script src="app/profile/profileEdit.js"></script>
+    <script src="app/profile/profileView.js"></script>
+    <script src="app/services/services.js"></script>
+    <script src="uploadToImgur.js"></script>
+    <script src="config/api_keys.js"></script>
+    <script src="app/admin/admin.js"></script>
+    <script src="app/app.js"></script>
   </body>
 </html>

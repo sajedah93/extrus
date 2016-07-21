@@ -1,3 +1,80 @@
-<div id='container' ng-module="RBKme.profileEdit">
+<md-dialog aria-label="Profile"  ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools myToolbar">
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <br>
+    <md-dialog-content>
 
-</div>
+      <div class="col-lg-1 col-md-0 col-sm-0"></div>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <img src="{{user.image}}" class="profilePic img-circle">
+        <md-button ng-click="changeProfilePic()" class="btn btn-primary center-block"> Change Profile Picture </md-button>
+      </div>
+
+      <div class="col-lg-1 col-md-0 col-sm-0"></div>
+      <div class="md-dialog-content profileInfo col-lg-6 col-md-6 col-sm-6">
+        <h3>
+        <div>
+          <label for="firstName" class="editLabel">First Name</label>
+          <input name='firstName' type="text"
+            ng-model="user.firstName"
+            placeholder="Enter your first name here" value="{user.firstName}" class="editInput"/><br><br>
+        </div>
+        <div>
+          <label for="lastName" class="editLabel">Last Name </label>
+          <input name='lastName' type="text"
+            ng-model="user.lastName"
+            placeholder="Enter your last name here" value="{user.lastName}" class="editInput"/><br><br>
+        </div>
+        <div>
+          <label for="age" class="editLabel">Age </label>
+          <input name='age' type="text"
+            ng-model="user.age"
+            placeholder="Enter your age here" value="{user.age}" class="editInput"/><br><br>
+        </div>
+        <div>
+          <label for="email" class="editLabel">Email</label>
+          <input name='email' type="text"
+            ng-model="user.email"
+            placeholder="Enter your email here" value="{user.email}" class="editInput"/><br><br>
+        </div>
+        <div>
+          <label for="About" class="editLabel">About Me</label>
+          <textarea rows="10" cols="60" name="about" ng-model="user.About" placeholder="Enter your bio here"
+          value="{user.About}" class="editInput"> 
+          </textarea><br><br>
+        </div>
+        <div>
+          <label for="password" class="myPasswordLabel">Change Your Password</label><br>
+          <input name='oldPassword' type="password"
+            ng-model="user.oldPassword"
+            placeholder="Enter your old password here" class="myPasswordInput"/><br>
+          <input name='newPassword' type="password"
+          ng-model="user.password"
+          placeholder="Enter your new password here" class="myPasswordInput"/><br>
+          <input name='repeatNewPassword' type="password"
+          ng-model="repeatNewPassword"
+          placeholder="Repeat your new password here" class="myPasswordInput"/><br>
+        </div>
+        <div>
+          <br>
+          <label ng-show="matched===false" ng-hide="matched===true" style="color:red;">{{errorMsg}}</label>
+        </div>
+        </h3>
+      </div>
+
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="answer()">
+       Save Changes
+      </md-button>
+      <md-button ng-click="cancel()">
+       Cancel
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

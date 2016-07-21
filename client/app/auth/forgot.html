@@ -1,0 +1,41 @@
+<md-dialog aria-label="Signin"  ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools myToolbar">
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <br>
+    <md-dialog-content>
+
+        <h3>
+        <div>
+          <label for="forogtUser" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Username</label>
+          <input name='forogtUser' type="text"
+            ng-model="user.forogtUser"
+            placeholder="Enter your username here" value="{user.forogtUser}" class="editInput"/><br><br>
+        </div>
+        <div>
+          <label for="forgotEmail" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Email</label>
+          <input name='forgotEmail' type="text"
+            ng-model="user.forgotEmail"
+            placeholder="Enter your email here" value="{user.forgotEmail}" class="editInput"/><br><br>
+        </div>
+        <div>
+          <br>
+          <label ng-show="filled===false" ng-hide="filled===true" style="color:red;">{{errorMsg}}</label>
+        </div>
+        </h3>
+
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="requestPass()">
+       Request
+      </md-button>
+      <md-button ng-click="cancel()">
+       Cancel
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

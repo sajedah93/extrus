@@ -1,0 +1,41 @@
+<md-dialog aria-label="Blog"  ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools myToolbar">
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <br>
+    <md-dialog-content>
+
+        <h3>
+        <div>
+          <label for="title" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Title</label>
+          <input name='title' type="text"
+            ng-model="blog.title"
+            placeholder="Enter your title here" value="{blog.title}" class="editInput"/><br><br>
+        </div>
+        <div>
+          <label for="blog" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Content</label>
+          <textarea rows="10" cols="60" name="blog" ng-model="blog.blog" placeholder="Enter your content here"
+          value="{blog.blog}" class="editInput"> 
+          </textarea><br><br>
+        </div>
+        <div>
+          <br>
+          <label ng-show="filled===false" ng-hide="filled===true" style="color:red;">{{errorMsg}}</label>
+        </div>
+        </h3>
+
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="answer()">
+       Post
+      </md-button>
+      <md-button ng-click="cancel()">
+       Cancel
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
