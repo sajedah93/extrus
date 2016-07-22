@@ -4,6 +4,7 @@ angular.module('RBKme', [
   'RBKme.newBlog',
   'RBKme.Msg',
   'RBKme.newMsg',
+  'RBKme.msgHistory',
   'RBKme.profileView',
   'RBKme.profileEdit',
   'RBKme.home',

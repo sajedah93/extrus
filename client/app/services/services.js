@@ -16,7 +16,6 @@ angular.module('RBKme.services', [])
 
   // function to get a single user from the database
   var getOne = function (id) {
-    console.log(id);
     return $http({
       method: 'GET',
       url: '/api/users/'+id
@@ -56,7 +55,6 @@ angular.module('RBKme.services', [])
       url: '/api/users/pairReflect',
       data: user
     }).then(function(resp){
-      console.log(resp);
       return resp; 
     })
   }
@@ -146,7 +144,18 @@ angular.module('RBKme.services', [])
       return resp;
     });
   };
-
+  
+  var getMessagedFriends = function (user) {
+    return $http({
+      method: 'POST',
+      url: '/api/users/getUserMessagedFriends',
+      data: user
+    })
+    .then(function (resp) {
+      return resp.data;
+    });
+  };
+  
   var getMessages = function (fromTo) {
     return $http({
       method: 'POST',
@@ -154,13 +163,14 @@ angular.module('RBKme.services', [])
       data: fromTo
     })
     .then(function (resp) {
-      return resp;
+      return resp.data;
     });
   };
 
   return {
     sendMessage: sendMessage,
-    getMessages: getMessages
+    getMessages: getMessages,
+    getMessagedFriends: getMessagedFriends
   };
 })
 .factory('Auth', function ($http, $location, $window) {

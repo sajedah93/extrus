@@ -4,7 +4,7 @@ angular.module('RBKme.profileEdit', [])
 	
 	$scope.user = {};
   	$scope.user = user;
-	
+
 	// Defining Password Boxes
   	$scope.oldPassword = '';
   	$scope.newPassword = '';

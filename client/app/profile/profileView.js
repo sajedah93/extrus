@@ -1,4 +1,5 @@
 angular.module('RBKme.profileView', [])
+
 .controller('profileViewController', function ($scope, $window, $mdDialog, Users ,user , Auth) {
   	
 	$scope.user = {};
@@ -49,9 +50,8 @@ angular.module('RBKme.profileView', [])
   {
     Auth.signout();
   }
+  
   window.onunload = unloadPage;
-
-
 
 	$scope.sameUser = function(){
 		var token = $window.localStorage.getItem('com.RBKme');

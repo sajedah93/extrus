@@ -1,5 +1,5 @@
 {
-  "name": "RBKme",
+  "name": "rbkme",
   "version": "1.0.0",
   "authors": [],
   "license": "MIT",
@@ -13,7 +13,8 @@
     "angular": "latest",
     "angular-route": "latest",
     "angular-mocks": "latest",
-    "angular-material": "latest"
+    "angular-material": "latest",
+    "angular-jk-rating-stars":"latest"
   },
   "resolutions": {
     "angular": "1.5.7"

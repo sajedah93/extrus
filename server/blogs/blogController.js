@@ -7,13 +7,16 @@ var findAllBlogs = Q.nbind(Blog.find, Blog);
 
 
 module.exports = {
-	getAllBlogs : function(req,res,next){
-		findAllBlogs({})
-				.then(function(blogs){
-					res.json(blogs)
-				}).fail(function(error){
-					next(error);
-				})
+	getAllBlogs : function(req,res){
+		Blog.find()
+		.sort({date: -1})
+		.exec(function(error,blogs){
+			if(error){
+				res.status(500).send(error);
+			} else {
+				res.json(blogs);
+			}
+		});
 	},
 
 	newBlog : function(req,res,next){

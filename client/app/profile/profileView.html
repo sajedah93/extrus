@@ -16,7 +16,7 @@
         <h3>Name: {{user.firstName}} {{user.lastName}}</h3>
         <h3>Age: {{user.age}}</h3>
         <h3>Email: {{user.email}}</h3>
-        <h3>GitHub: {{user.gitHub}}</h3>
+        <h3>GitHub: <a ng-href="{{user.gitHub}}">{{user.gitHub}}</a></h3>
         <h3>Cohort Number: {{user.cohortNumber || "-"}}</h3>
         <h3>Employed: {{career}}</h3>
         <h3>About: {{user.About || "-"}}</h3>

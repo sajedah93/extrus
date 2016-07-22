@@ -78,3 +78,9 @@ TMLJSCSSDIALOG1.TMPL.HTMLTABDIALOG.TMPL.HTMLHTMLJSCSSDIALOG1.TMPL.HTMLTABDIALOG.
 .myToolbar {
   background-color: #B51A82;
 }
+.msgPic {
+  width: 15%;
+}
+.msgText {
+  margin-top: 14%;
+}

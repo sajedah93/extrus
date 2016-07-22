@@ -5,7 +5,7 @@
     <div class="st_thumbs_wrapper">
         <div class="st_thumbs"
             ng-repeat="user in data.users | filter:search">
-            <img src="{{user.image}}" ng-click="showProfile($event,user)" style="width:20%">
+            <img ng-src="{{user.image}}" ng-click="showProfile($event,user)" style="width:20%">
             <br><br>
     	</div>
     </div>
