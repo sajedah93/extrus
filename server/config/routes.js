@@ -12,6 +12,7 @@ module.exports = function(app, express){
 	app.post('/api/users', userController.newUser);
 	app.post('/api/users/forget', userController.forgetPassUser);
 	app.post('/api/users/editProfile', userController.editProfile);
+	app.get('/api/users/:id', userController.getOne);
 
 
 	// Pair Reflect Post

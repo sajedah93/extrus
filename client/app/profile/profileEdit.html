@@ -41,6 +41,17 @@
             ng-model="user.email"
             placeholder="Enter your email here" value="{user.email}" class="editInput"/><br><br>
         </div>
+         <div>
+          <label for="gitHub" class="editLabel">GitHub</label>
+          <input name='gitHub' type="text"
+            ng-model="user.gitHub"
+            placeholder="GitHub Account" value="{user.gitHub}" class="editInput"/><br><br>
+        </div>
+        <div>
+           <label for="Employed" class="editLabel">Employed</label>
+           <md-switch ng-model="user.employed" aria-label="Switch 1" ng-true-value="true" ng-false-value="false">
+          </md-switch>
+        <div>
         <div>
           <label for="About" class="editLabel">About Me</label>
           <textarea rows="10" cols="60" name="about" ng-model="user.About" placeholder="Enter your bio here"

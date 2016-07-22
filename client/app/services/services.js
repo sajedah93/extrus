@@ -16,6 +16,7 @@ angular.module('RBKme.services', [])
 
   // function to get a single user from the database
   var getOne = function (id) {
+    console.log(id);
     return $http({
       method: 'GET',
       url: '/api/users/'+id
@@ -49,11 +50,23 @@ angular.module('RBKme.services', [])
     });
   }
 
+  var updatePair = function(user){
+    return $http({
+      method: 'POST', 
+      url: '/api/users/pairReflect',
+      data: user
+    }).then(function(resp){
+      console.log(resp);
+      return resp; 
+    })
+  }
+
   return {
     getAll: getAll,
     getOne : getOne,
     addOne: addOne,
-    editProfile: editProfile
+    editProfile: editProfile,
+    updatePair : updatePair
   };
 })
 

@@ -16,9 +16,18 @@
         <h3>Name: {{user.firstName}} {{user.lastName}}</h3>
         <h3>Age: {{user.age}}</h3>
         <h3>Email: {{user.email}}</h3>
+        <h3>GitHub: {{user.gitHub}}</h3>
         <h3>Cohort Number: {{user.cohortNumber || "-"}}</h3>
+        <h3>Employed: {{career}}</h3>
         <h3>About: {{user.About || "-"}}</h3>
-        <h3>Pair Rating: {{user.pairReflect || "-"}}</h3>
+        <h3>Pair Reflect :  {{user.average}}/10 from {{user.counter}} students.
+        <jk-rating-stars 
+          ng-show="Rating"
+          max-rating="5" 
+          rating="secondRate" 
+          on-rating="onItemRating(rating)">
+        </jk-rating-stars>
+        </h3>
       </div>
     </md-dialog-content>
     <md-dialog-actions layout="row">

@@ -14,5 +14,8 @@
     "angular-route": "latest",
     "angular-mocks": "latest",
     "angular-material": "latest"
+  },
+  "resolutions": {
+    "angular": "1.5.7"
   }
 }
