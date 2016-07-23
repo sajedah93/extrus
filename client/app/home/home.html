@@ -1,15 +1,20 @@
 
-<div style="background-color:pink ; height:500px" ng-controller="HomeController" class="md-padding" id="popupContainer" ng-cloak>
+<div style="background-image:url(/assets/back.gif) ; height:1000px ; opacity:0
+9;" ng-controller="HomeController" class="md-padding" id="popupContainer" ng-cloak>
+
+<center><h1 style="color:white;margin-top:1em;font-size:60px;font-family:"Arial Black", Gadget, sans-serif">RBKme</h1><center>
+
    <center> <div >
-     	<input class='search' type='text' ng-model='search' placeholder='search' /><br><br>
+     	<input class='search' style='margin-top: 5em' type='text' ng-model='search' placeholder='search' /><br><br>
     </div> </center>
     
 
-   <center> <div style="padding: 4em" class="st_thumbs_wrapper li-first ">
-     <div class="st_thumbs "
+   <center> <div style="padding: 4em ;" class="st_thumbs_wrapper li-first ">
+     <div class="st_thumbs"
+
             ng-repeat="user in data.users | filter:search">
 
-            <img ng-src="{{user.image}}" ng-click="showProfile($event,user)" style="width:20%">
+            <img class='img-circle' ng-src="{{user.image}}" ng-click="showProfile($event,user)" style="width:20% ;">
 
             <br><br>
     	</div> <center>

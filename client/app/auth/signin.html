@@ -1,4 +1,4 @@
-<md-dialog aria-label="Signin"  ng-cloak style='width: 70%'>
+<md-dialog aria-label="Signin"  ng-cloak style='width: 70%;'>
  <center> <form>
     <md-toolbar>
       <div class="md-toolbar-tools myToolbar">
@@ -21,7 +21,7 @@
             placeholder="Enter your password here" value="{user.password}" class="editInput"/><br><br>
         </div>
         <div>
-          <a href='#' ng-click="forgotPassword($event)" style="color: #B51A82;">Forgot username or password?</a>
+          <a href='#' ng-click="forgotPassword($event)" style="color: grey;">Forgot username or password?</a>
         </div>
         <h5>
         <div>
@@ -33,11 +33,11 @@
     </md-dialog-content>
     <md-dialog-actions layout="row">
       <span flex></span>
-      <md-button style='background-color:#B51A82;
+      <md-button style='background-color:grey;
     color: white;' ng-click="signin()">
        Sign In
       </md-button>
-      <md-button style='background-color:#B51A82;
+      <md-button style='background-color:grey;
     color: white;' ng-click="cancel()">
        Cancel
       </md-button>

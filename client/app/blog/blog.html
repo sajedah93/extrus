@@ -1,16 +1,22 @@
+ <link rel="stylesheet" type="text/css" href="styles/button.css" />
+
 <div ng-controller="BlogController" class="md-padding" ng-cloak style="background-color:white">
     <div>
-    <h1 style="text-align:center;color:#e6005c"> RBK blogs </h1>
-     <center>	<input type='text' ng-model='search' class='search'placeholder='filter'/> </center>
-     	<input type="button" class="btn myBtn " ng-click="addPost($event)" 
-     	ng-show="auth()===true" ng-hide="auth()===false" value="Add Post"/>
+    <h1 style="text-align:center;"> RBK blogs </h1>
+     <center>	<input type='text' ng-model='search' class='search'placeholder='filter' style="background-color: #ebebe0 ; margin-top:2em" /> </center>
+  
+     		<ul>
+        <li><a ng-click="addPost($event)" ng-show="auth()===true" ng-hide="auth()===false" value="add Post" class="round green">Add Blog<span class="round">add your blog here</span></a></li>
+ 
+        </ul>
      	<br><br><br><br>
      	<div class="blogs">
-	         <center><div class="blog row" style="background-color:pink ; opacity:0.8;text-align:left;font-family:Futura,Trebuchet MS,Arial,sans-serif;line-height:380%;" 
+	         <center><div class="blog row" style="background-color: #99c2ff
+;opacity:0.8;text-align:left;font-family:Futura,Trebuchet MS,Arial,sans-serif;line-height:380%;" 
 	            ng-repeat="blog in data.blogs | filter:search">
 		        <div class="col-lg-1 col-md-0 col-sm-0"></div>
 		      	<div class="col-lg-3 col-md-3 col-sm-6">
-		        	<img src="{{blog.image}}" class="profilePic img-circle"><br><br><br><br>
+		        	<img style='margin-top:2em'src="{{blog.image}}" class="profilePic img-circle"><br><br><br><br>
 		      	</div>
 		      	<div class="col-lg-1 col-md-0 col-sm-0"></div>
 		      	<div class="blogInfo col-lg-7 col-md-8 col-sm-6">

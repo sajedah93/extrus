@@ -1,3 +1,46 @@
+select.custom-dropdown {
+ -webkit-appearance: none;  
+ -moz-appearance: none;  
+ border: 0 !important; 
+
+ color: black;
+ -webkit-border-radius: 5px;
+ border-radius: 5px;
+ font-size: 14px;
+ padding: 10px;
+ width: 35%;
+ cursor: pointer;
+
+ background: #99ddff ;
+ background-size: 40px 37px; /*TO ACCOUNT FOR @2X IMAGE FOR RETINA */
+}
+
+
+.content {
+   background:#fff;
+   padding-top:2em;
+}
+.home .content {
+   padding-top:0;
+}
+
+.main { }
+.page-header {
+   margin: 10px 0 20px 0;
+   background: #222;
+   padding: 5px;
+   border-radius: 5px;
+}
+.page-header h1 {
+   color:#fff;
+   margin:0;
+}
+.page-header h1:before {
+   content:  "\00bb";
+}
+
+
+
 
 .Btn {
    background-color: #B51A82;
@@ -47,7 +90,8 @@ z-index:-1;
   -webkit-transition: all linear.5;
   -webkit-transform: scale(1.8);
   z-index: 2000;
-  border: 3px solid #e6005c ;
+  border: 3px solid #white ;
+
 
 }
 .hoverbox li:hover .preview {
@@ -112,12 +156,13 @@ TMLJSCSSDIALOG1.TMPL.HTMLTABDIALOG.TMPL.HTMLHTMLJSCSSDIALOG1.TMPL.HTMLTABDIALOG.
   float: left;
 }
 .editLabel {
-  width: 30%;
-  float: left;
+  width: 70%;
+  float: right;
+  
 }
 .editInput {
-  width: 50%;
-  float: left;
+  width: 80%;
+  float: center;
 }
 .myPasswordLabel {
   width: 80%;
@@ -160,19 +205,19 @@ filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
   border-bottom: solid 1px #fff;
 }
 .myBtn {
-  background-color: #B51A82;
+  background-color: grey;
   color:white;
   margin-top: 5%;
   width: 80%;
 }
 .myToolbar {
-  background-color: #B51A82;
+  background-color: grey;
 }
 
 .search {
     width: 300px;
     box-sizing: border-box;
-    border: 2px solid #e6005c
+    border: 2px solid white;
 ;
     border-radius: 4px;
     font-size: 16px;
@@ -251,4 +296,51 @@ filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
 }
 .msgText {
   margin-top: 14%;
+}
+
+
+body,html {
+  height: 100%;
+}
+
+body {
+  padding-top: 50px;
+}
+
+.wide {
+  
+  height:calc(100% - 1px);
+/*  background-image:url('/assets/zft.jpg');
+*/  background-size:cover;
+  opacity: 0.8
+}
+div.wide {
+  height:60%;
+}
+
+.wide img {
+  width:50%;
+}
+
+.logo {
+  color:#fff;
+  font-weight:800;
+  font-size:14pt;
+  padding:25px;
+  text-align:center;
+}
+
+.line {
+  padding-top:20px;
+  white-space:no-wrap;
+  overflow:hidden;
+  text-align:center;
+}
+
+button:hover {
+  background: white;
+}
+
+#parent {
+  display: inline-flex   ;
 }
