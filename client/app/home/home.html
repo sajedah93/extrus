@@ -1,14 +1,18 @@
-<div ng-controller="HomeController" class="md-padding" id="popupContainer" ng-cloak>
-    <div>
-     	<input type='text' ng-model='search' placeholder='filter' /><br><br>
-    </div>
-    <div class="st_thumbs_wrapper">
-        <div class="st_thumbs"
+
+<div style="background-color:pink ; height:500px" ng-controller="HomeController" class="md-padding" id="popupContainer" ng-cloak>
+   <center> <div >
+     	<input class='search' type='text' ng-model='search' placeholder='search' /><br><br>
+    </div> </center>
+    
+
+   <center> <div style="padding: 4em" class="st_thumbs_wrapper li-first ">
+     <div class="st_thumbs "
             ng-repeat="user in data.users | filter:search">
+
             <img ng-src="{{user.image}}" ng-click="showProfile($event,user)" style="width:20%">
+
             <br><br>
-    	</div>
+    	</div> <center>
     </div>
 </div>
-
 

@@ -3,30 +3,70 @@
   <head>
     <meta charset="utf-8" />
     <title>RBKme</title>
+
+
+
+
+
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
     <link rel="stylesheet" type="text/css" href="lib/angular-material/angular-material.css" />
     <link href="lib/angular-jk-rating-stars/dist/jk-rating-stars.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    
   </head>
-  <body ng-controller="mainCtrl" style="background-color: grey;">
+  <body ng-controller="mainCtrl" style="background-image:url(/assets/soso.jpg)">
     <div class="container">
-        <div class="col-lg-10 col-md-10 col-sm-10">
-            <img style="margin-left:5em; margin-top:5em" src="http://rbk.org/wp-content/uploads/2016/03/znewlogo.png" height="150">
-        </div>
-        <div ng-switch on="loggedIN" class="col-lg-2 col-md-2 col-sm-2" style="margin-top: 4%">
-            <input type="button" class="btn myBtn" ng-switch-when="false" ng-click="signin($event)" value="Sign in"/>
-            <input type="button" class="btn myBtn" ng-switch-when="true" ng-click="signout($event)" value="Sign out"/>
-            <a class="btn myBtn" href="#/">Home</a>
-            <a class="btn myBtn" href="#/blogs">Blogs</a>
-            <a class="btn myBtn" ng-switch-when="true" href="#/messages">Messages</a>
+
+
+ <div class='header' >
+        <div ng-switch on="loggedIN"  style="margin-top: 4% ; background-color:white;opacity:0.5;width:150%;margin-left:-50em ;">
+
+         
+            <ul>
+                <li>
+                    <a style="color:black" href="#/">Home</a>
+                </li>
+                <li>
+                      <a href="#/blogs">Blogs</a>
+        
+                </li>
+                <li>
+                    <a href="#/messages" ng-switch-when="true"> Messages</a>
+                   
+                </li>
+                <li>
+                    <a  ng-click='signin($event)' ng-switch-when="false"> Login</a>  
+                </li>
+                <li>
+                    <a  ng-click='signout($evnet)' ng-switch-when="true"> Logout</a>  
+                </li>
+            </ul>
+
+      <!--   <a href='#/' ng-click='signout($event)'> Sign out </a>
+         <a href='#/' ng-click='signin($event)'> Sign in </a>
+            <a  href="#/">Home</a>
+            <a href="#/blogs">Blogs</a>
+            <a  ng-switch-when="true" href="#/messages">Messages</a> -->
         </div>
     </div>
+
+
+</div>
+
+
+
+        <div style="margin-bottom:5em">
+            <img style="margin-left:5em; margin-top:1em" src="http://rbk.org/wp-content/uploads/2016/03/znewlogo.png" height="150">
+
+        </div>
+
+
 
     <div ng-view class="examples"></div>
     <center style="background-color: grey;">
         <div style="color:white; width:2% ">
-            <h2> RBK </h2>  
         </div>
     </center>
 

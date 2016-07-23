@@ -1,5 +1,5 @@
-<md-dialog aria-label="Signin"  ng-cloak>
-  <form>
+<md-dialog aria-label="Signin"  ng-cloak style='width: 70%'>
+ <center> <form>
     <md-toolbar>
       <div class="md-toolbar-tools myToolbar">
         <span flex></span>
@@ -8,14 +8,13 @@
     <br>
     <md-dialog-content>
 
-        <h3>
-        <div>
+          <div>
           <label for="username" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Username</label>
           <input name='username' type="text"
             ng-model="user.username"
             placeholder="Enter your username here" value="{user.username}" class="editInput"/><br><br>
         </div>
-        <div>
+                <div>
           <label for="password" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Password</label>
           <input name='password' type="password"
             ng-model="user.password"
@@ -24,21 +23,24 @@
         <div>
           <a href='#' ng-click="forgotPassword($event)" style="color: #B51A82;">Forgot username or password?</a>
         </div>
+        <h5>
         <div>
           <br>
           <label ng-show="filled===false" ng-hide="filled===true" style="color:red;">{{errorMsg}}</label>
         </div>
-        </h3>
+        </h5>
 
     </md-dialog-content>
     <md-dialog-actions layout="row">
       <span flex></span>
-      <md-button ng-click="signin()">
+      <md-button style='background-color:#B51A82;
+    color: white;' ng-click="signin()">
        Sign In
       </md-button>
-      <md-button ng-click="cancel()">
+      <md-button style='background-color:#B51A82;
+    color: white;' ng-click="cancel()">
        Cancel
       </md-button>
     </md-dialog-actions>
-  </form>
+  </form> </center>
 </md-dialog>

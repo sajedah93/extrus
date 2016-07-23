@@ -1,4 +1,4 @@
-<md-dialog aria-label="Signin"  ng-cloak>
+<md-dialog aria-label="Signin"  ng-cloak style='width: 50%'>
   <form>
     <md-toolbar>
       <div class="md-toolbar-tools myToolbar">
@@ -7,8 +7,8 @@
     </md-toolbar>
     <br>
     <md-dialog-content>
-
-        <h3>
+<center>
+        <h5>
         <div>
           <label for="forogtUser" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Username</label>
           <input name='forogtUser' type="text"
@@ -25,15 +25,17 @@
           <br>
           <label ng-show="filled===false" ng-hide="filled===true" style="color:red;">{{errorMsg}}</label>
         </div>
-        </h3>
-
+        </h5>
+</center>
     </md-dialog-content>
     <md-dialog-actions layout="row">
       <span flex></span>
-      <md-button ng-click="requestPass()">
+      <md-button style='background-color:#B51A82;
+    color: white;' ng-click="requestPass()">
        Request
       </md-button>
-      <md-button ng-click="cancel()">
+      <md-button style='background-color:#B51A82;
+    color: white;' ng-click="cancel()">
        Cancel
       </md-button>
     </md-dialog-actions>
