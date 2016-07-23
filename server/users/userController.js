@@ -99,6 +99,26 @@ module.exports = {
 			});
 	},
 
+  deleteUser : function(req, res){
+    console.log(req.body);
+    var username = req.body.username;
+
+    User.findOne({ username : username}, function (err, model) {
+      if (err) {
+          return;
+      }
+      // console.log(model);
+      model.remove(function (err, table) {
+          if(err){
+            res.status(500).send('Unable to delete user')
+          } else {
+            res.status(201).send('User Successfully Removed');
+            console.log('User Removed');
+          }
+      });
+    });
+  },
+
 
 
 	signin: function (req, res) {

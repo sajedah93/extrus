@@ -59,12 +59,21 @@ angular.module('RBKme.services', [])
     })
   }
 
+  var deleteOne = function(user){
+    return $http({
+      method : 'POST', 
+      url : '/api/users/delete', 
+      data : user
+    })
+  }
+
   return {
     getAll: getAll,
     getOne : getOne,
     addOne: addOne,
     editProfile: editProfile,
-    updatePair : updatePair
+    updatePair : updatePair,
+    deleteOne : deleteOne
   };
 })
 

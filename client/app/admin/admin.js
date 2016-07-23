@@ -37,4 +37,16 @@ angular.module('RBKme.admin', [])
 			console.log(error);
 		});
 	};
+
+  // Delete one user from daataBase. 
+  $scope.deleteUser = function(){
+    var obj = {
+      username : $scope.username
+    }
+    Users.deleteOne(obj)
+         .then(function(response){
+          $scope.username = '';
+          console.log(response);
+         })
+  }
 });

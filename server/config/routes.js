@@ -14,6 +14,8 @@ module.exports = function(app, express){
 	app.post('/api/users/editProfile', userController.editProfile);
 	app.get('/api/users/:id', userController.getOne);
 
+	//Delete User
+	app.post('/api/users/delete', userController.deleteUser);
 
 
 	// Pair Reflect Post
