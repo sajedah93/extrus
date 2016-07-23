@@ -20,33 +20,29 @@
     <div class="container">
 
 
- <div class='header' style="margin-left:-110em ; margin-top:-7em ;">
+ <div class='header' >
         <div ng-switch on="loggedIN"  style="margin-top: 4% ; background-color:white;opacity:0.5;width:150%;margin-left:-50em ;">
 
-
-        <div>
          
             <ul>
                 <li>
-                    <a style="color:black" href="index.html">Home</a>
+                    <a style="color:black" href="#/">Home</a>
                 </li>
                 <li>
                       <a href="#/blogs">Blogs</a>
         
                 </li>
                 <li>
-                    <a href="#/messages"> Messages</a>
+                    <a href="#/messages" ng-switch-when="true"> Messages</a>
                    
                 </li>
-                  <li>
-                    <a  ng-click='signin()'> login</a>
-                   
+                <li>
+                    <a  ng-click='signin($event)' ng-switch-when="false"> Login</a>  
                 </li>
-                
+                <li>
+                    <a  ng-click='signout($evnet)' ng-switch-when="true"> Logout</a>  
+                </li>
             </ul>
-        </div>
-   
-
 
       <!--   <a href='#/' ng-click='signout($event)'> Sign out </a>
          <a href='#/' ng-click='signin($event)'> Sign in </a>
