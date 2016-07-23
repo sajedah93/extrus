@@ -73,7 +73,6 @@ module.exports = {
 			{from: username , to:friend}, {from : friend , to : username}
 			]
 		})
-		.sort({date:-1})
 		.exec(function(err, messages){
 			// This is just to check the messages in your terminal
 			console.log("=========================================")

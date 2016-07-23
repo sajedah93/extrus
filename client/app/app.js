@@ -47,6 +47,9 @@ angular.module('RBKme', [
   $scope.loggedIN = false;
   
   $scope.signin = function(ev) {
+    // for more info about the parameters we're passing here
+    // check the documentation in the showDialog function
+    // in the Dialogs factory in the services.js file
     Dialogs.showDialog($scope,$mdDialog,$mdMedia,
       'AuthController','app/auth/signin.html',ev,
       {},function(answer){

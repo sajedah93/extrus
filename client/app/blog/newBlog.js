@@ -18,13 +18,16 @@ angular.module('RBKme.newBlog', [])
 	$scope.answer = function() {
 
 		$scope.filled = true;
+		// checking if all inputs are filled
 		if(!$scope.blog.title || !$scope.blog.blog){
 			handleBlogInputs($scope,'Please fill all fields');
 		} else {
 			$scope.blog.username = window.username;
+			// adding a blog
 			Blogs.addOne($scope.blog)
 			.then(function(response){
 				if(response.status === 200){
+					//clearing input boxes
 					clearBlogInputBoxes($scope);
 					$mdDialog.hide();
 				} else {

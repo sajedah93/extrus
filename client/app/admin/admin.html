@@ -57,4 +57,15 @@
     </div>
     <input type="button" value="Add User" ng-click="addUser()"/>
   </div>
+  <br>
+  <br>
+  <div ng-show="giveAccess===true" ng-hide="giveAccess===false">
+    <div>
+      <label for="username" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Username</label>
+      <input name='username' type="text"
+        ng-model="username"
+        placeholder="Enter username to delete here" class="editInput"/><br><br>
+    </div>
+    <input type="button" value="Delete User" ng-click="deleteUser()"/>
+  </div>
 </h3>

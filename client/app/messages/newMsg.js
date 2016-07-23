@@ -18,10 +18,12 @@ angular.module('RBKme.newMsg', [])
 	$scope.answer = function() {
 
 		$scope.filled = true;
+		// checking if all inputs are filled
 		if(!$scope.msg.to || !$scope.msg.text){
 			handleInputs($scope,'Please fill all fields');
 		} else {
 			$scope.msg.from = window.username;
+			// sending the message
 			Messages.sendMessage($scope.msg)
 			.then(function(response){
 				if(response.status === 201){

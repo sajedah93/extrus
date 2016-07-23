@@ -99,6 +99,26 @@ module.exports = {
 			});
 	},
 
+  deleteUser : function(req, res){
+    console.log(req.body);
+    var username = req.body.username;
+
+    User.findOne({ username : username}, function (err, model) {
+      if (err) {
+          return;
+      }
+      // console.log(model);
+      model.remove(function (err, table) {
+          if(err){
+            res.status(500).send('Unable to delete user')
+          } else {
+            res.status(201).send('User Successfully Removed');
+            console.log('User Removed');
+          }
+      });
+    });
+  },
+
 
 
 	signin: function (req, res) {
@@ -140,7 +160,7 @@ module.exports = {
           age: req.body.age,
           cohortNumber: req.body.cohortNumber,
           image: req.body.image || 'http://i.imgur.com/FlEXhZo.jpg?1',
-          gitHub : req.body.gitHub || 'Not added Yet',  // Add your gitHub account and is optional
+          gitHub : req.body.gitHub || '',  // Add your gitHub account and is optional
           employed : req.body.employed || false, //  Add if employed , if left empty then by default would be false;
           counter : 0 , 
           usersRating: [] // added the usersRating array .

@@ -30,11 +30,13 @@ angular.module('RBKme.profileEdit', [])
 			var reader = new FileReader();
 			reader.addEventListener('load', ()=>{
 				var imgData = reader.result.slice(23);
+				// sending the decoded image to IMGUR to get a link for that image
 				uploadToIMGUR(IMGUR_CLIENT_ID, imgData, function(result){
 					$scope.user.image = result.link;
 					$scope.changedFlag = true;
 				});
 			})
+			// using the reader to decode the image to base64
 			reader.readAsDataURL(file);
 		})
 		fileBt.click();
