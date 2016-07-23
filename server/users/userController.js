@@ -160,7 +160,7 @@ module.exports = {
           age: req.body.age,
           cohortNumber: req.body.cohortNumber,
           image: req.body.image || 'http://i.imgur.com/FlEXhZo.jpg?1',
-          gitHub : req.body.gitHub || 'Not added Yet',  // Add your gitHub account and is optional
+          gitHub : req.body.gitHub || '',  // Add your gitHub account and is optional
           employed : req.body.employed || false, //  Add if employed , if left empty then by default would be false;
           counter : 0 , 
           usersRating: [] // added the usersRating array .

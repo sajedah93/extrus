@@ -10,6 +10,7 @@
     "Sajedah Yousef <yousef.sajedah93@gmail.com>"
   ],
   "scripts": {
+    "postinstall":"npm install -g bower; bower install",
     "lint": "jscs ./"
   },
   "repository": {
@@ -22,6 +23,7 @@
   "license": "UNLICENSED",
   "private": true,
   "devDependencies": {
+    "bower":"latest",
     "browser-sync": "^1.5.7",
     "chai": "^3.4.1",
     "clone-stats": "0.0.1",
