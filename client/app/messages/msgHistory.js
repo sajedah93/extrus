@@ -5,7 +5,6 @@ angular.module('RBKme.msgHistory', [])
 	$scope.data = {};
 	$scope.user = {};
 	$scope.friend = {};
-
 	$scope.initalize = function(){
 		Messages.getMessages(fromToObj)
 		.then(function(response){

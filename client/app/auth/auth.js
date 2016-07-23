@@ -72,6 +72,7 @@ angular.module('RBKme.auth', [])
       Auth.forgotPassword(objToSend)
       .then(function(response){
         console.log(response);
+        alert(JSON.stringify(response.data.result));
       })
       .catch(function(error){
         console.log(error);

@@ -1,20 +1,28 @@
 angular.module('RBKme.profileView', [])
 
 .controller('profileViewController', function ($scope, $window, $mdDialog, Users ,user , Auth) {
-  	
-	$scope.user = {};
-	$scope.user = user;
-  $scope.total = 0;
 
-  if($scope.user.usersRating.length > 0){
-    for(var i = 0; i < $scope.user.usersRating.length ; i++){
-      $scope.total+= $scope.user.usersRating[i].rating;
-    };
-  }
-	$scope.user.average = Math.floor($scope.total/user.counter) || 0;
+  $scope.user = {};
+  $scope.user = user;
+  $scope.total = 0;
   $scope.Rating = false;
 
-
+  Users.getOne(user.username).then(function(response){
+    $scope.user = response;
+    if(response.counter === 1){
+      $scope.user.average = $scope.user.usersRating[0].rating;
+    }
+      else{
+        if($scope.user.usersRating.length > 0){
+          for(var i = 0; i < $scope.user.usersRating.length ; i++){
+            $scope.total+= $scope.user.usersRating[i].rating;
+          };
+        }
+      	$scope.user.average = Math.floor($scope.total/user.counter) || 0;
+      }
+  });
+  
+  
   if(Auth.isAuth() && $window.username !== $scope.user.username){
     // If Authorized and token is available , then rating can be shown
     // And if the user logged in and the selected user are not equal to each other then show
@@ -28,12 +36,13 @@ angular.module('RBKme.profileView', [])
   		Users.updatePair(obj); // This function updates the usersRating key.
       // After updating . get that username to update his total pair review.
       Users.getOne(user.username).then(function(response){
+
         $scope.total = 0;
         for(var i = 0; i < response.usersRating.length ; i++){
           $scope.total+= response.usersRating[i].rating;
         };
         $scope.user.counter = response.counter;
-        $scope.user.average = Math.floor($scope.total/response.counter);
+        $scope.user.average = Math.floor($scope.total/response.counter) || 0;
       })
   	};
   }
