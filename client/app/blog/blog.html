@@ -1,11 +1,12 @@
-<div ng-controller="BlogController" class="md-padding" ng-cloak>
+<div ng-controller="BlogController" class="md-padding" ng-cloak style="background-color:white">
     <div>
-     	<input type='text' ng-model='search' placeholder='filter'/>
-     	<input type="button" class="btn myBtn" ng-click="addPost($event)" 
+    <h1 style="text-align:center;color:#e6005c"> RBK blogs </h1>
+     <center>	<input type='text' ng-model='search' class='search'placeholder='filter'/> </center>
+     	<input type="button" class="btn myBtn " ng-click="addPost($event)" 
      	ng-show="auth()===true" ng-hide="auth()===false" value="Add Post"/>
      	<br><br><br><br>
      	<div class="blogs">
-	        <div class="blog row"
+	         <center><div class="blog row" style="background-color:pink ; opacity:0.8;text-align:left;font-family:Futura,Trebuchet MS,Arial,sans-serif;line-height:380%;" 
 	            ng-repeat="blog in data.blogs | filter:search">
 		        <div class="col-lg-1 col-md-0 col-sm-0"></div>
 		      	<div class="col-lg-3 col-md-3 col-sm-6">
@@ -13,11 +14,11 @@
 		      	</div>
 		      	<div class="col-lg-1 col-md-0 col-sm-0"></div>
 		      	<div class="blogInfo col-lg-7 col-md-8 col-sm-6">
-		      		<h3>{{blog.name}}</h3>
-			        <h3>{{blog.title}}</h3>
-			        <h3>{{blog.blog}}</h3>
+		      		<h2 >{{blog.name}}</h3>
+			        <h2 >{{blog.title}}</h3>
+			        <h4>{{blog.blog}}</h3>
 		      	</div>
-    		</div>
+    		</div> </center>
     	</div>
 	</div>
 </div>
