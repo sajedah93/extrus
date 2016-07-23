@@ -49,11 +49,22 @@ angular.module('RBKme.services', [])
     });
   }
 
+  var updatePair = function(user){
+    return $http({
+      method: 'POST', 
+      url: '/api/users/pairReflect',
+      data: user
+    }).then(function(resp){
+      return resp; 
+    })
+  }
+
   return {
     getAll: getAll,
     getOne : getOne,
     addOne: addOne,
-    editProfile: editProfile
+    editProfile: editProfile,
+    updatePair : updatePair
   };
 })
 
@@ -133,7 +144,18 @@ angular.module('RBKme.services', [])
       return resp;
     });
   };
-
+  
+  var getMessagedFriends = function (user) {
+    return $http({
+      method: 'POST',
+      url: '/api/users/getUserMessagedFriends',
+      data: user
+    })
+    .then(function (resp) {
+      return resp.data;
+    });
+  };
+  
   var getMessages = function (fromTo) {
     return $http({
       method: 'POST',
@@ -141,13 +163,14 @@ angular.module('RBKme.services', [])
       data: fromTo
     })
     .then(function (resp) {
-      return resp;
+      return resp.data;
     });
   };
 
   return {
     sendMessage: sendMessage,
-    getMessages: getMessages
+    getMessages: getMessages,
+    getMessagedFriends: getMessagedFriends
   };
 })
 .factory('Auth', function ($http, $location, $window) {

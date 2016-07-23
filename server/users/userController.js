@@ -59,11 +59,21 @@ module.exports = {
 			});
 	},
 
+  getOne : function(req,res){
+    User.findOne({username: req.params.id})
+        .exec(function(err, user){
+          if(user){
+            // res.setHeader('Content-Type', 'application/json');
+            return res.status(200).send(user);
+          }
+        })
+  },
+
 	getAllUsers: function(req,res){
 		User.find({})
 			.exec(function(error, users){
         if(error){
-          res.status(500).send(error);
+        return res.status(500).send(error);
         } else {
           // TODO : SEND CERTAIN PROPERTIES OF USER
           var newArr = [];
@@ -80,6 +90,8 @@ module.exports = {
             newObj.pairReflect = users[i].pairReflect;
             newObj.gitHub = users[i].gitHub;  // Added a gitHub on creation
             newObj.employed = users[i].employed; // Added a Boolean to check if employed
+            newObj.counter = users[i].counter; // send the counter to display the ratings out of # of students.
+            newObj.usersRating = users[i].usersRating;
             newArr.push(newObj);
           }
 				  res.json(newArr);
@@ -128,10 +140,10 @@ module.exports = {
           age: req.body.age,
           cohortNumber: req.body.cohortNumber,
           image: req.body.image || 'http://i.imgur.com/FlEXhZo.jpg?1',
-          gitHub : req.body.gitHub ,  // Add your gitHub account and is optional
+          gitHub : req.body.gitHub || 'Not added Yet',  // Add your gitHub account and is optional
           employed : req.body.employed || false, //  Add if employed , if left empty then by default would be false;
           counter : 0 , 
-          pairReflect :  0
+          usersRating: [] // added the usersRating array .
         });
         
         newUser.save(function(err, newUser){
@@ -183,11 +195,11 @@ module.exports = {
           user.email = req.body.email || user.email;
           user.firstName = req.body.firstName || user.firstName;
           user.lastName = req.body.lastName || user.lastName;
+          user.About = req.body.About || user.About;
           user.age = req.body.age || user.age;
           user.image = req.body.image || user.image;
-          user.employed = req.body.employed || user.employed; // Edit if employed 
+          user.employed = req.body.employed; // Edit if employed 
           user.gitHub = req.body.gitHub || user.gitHub; // Edit your gitHub repo if needed.
-          user.pairReflect = req.body.pairReflect || user.pairReflect; // Set up the pair Reflect
           if(req.body.oldPassword){
             User.comparePassword(req.body.oldPassword,user.password, res, function(found){
               if(!found){
@@ -218,9 +230,11 @@ module.exports = {
   },
 
   pairReflectCalculator : function(req,res){
-    
-    var username  = req.body.username; // takes username (string) as body 
+    var from  = req.body.from; // global username 
+    var username  = req.body.username; // takes username assigned to rate (string) as body 
     var reflection  = req.body.pairReflect; //  takes pairReflect (number) as body
+    var flag = false;
+
 
     // if front end accidentally sends a string . 
     if(typeof reflection === 'string'){
@@ -235,19 +249,38 @@ module.exports = {
 
     User.findOne({username: req.body.username})
       .exec(function(err , user){
-        if(err){
+        if(!user){
           return res.status(500).send('User not Found');
         } else {
-          if(reflection){
-            user.counter++;
-            user.pairReflect+= reflection;
-            user.save(function(err , userUpdated){
-              if(userUpdated){
-                var average = user.pairReflect / user.counter;
-                res.status(201).send({average:average})
+            for(var i = 0 ; i < user.usersRating.length; i++){
+              if(user.usersRating[i].username === from){
+                flag = true;
+                user.usersRating.splice(i,1);
+                user.usersRating.push({username : from , rating : reflection});
+                user.usersRating[i]['rating'] = reflection;
+                user.save(function(err , updatedUser){
+                  var total = 0;
+                  for(var i = 0; i < updatedUser.usersRating.length; i++){
+                    total+= updatedUser.usersRating[i].rating;
+                  }
+                  var average = total / updatedUser.counter;
+                  return res.status(201).send({average : average, counter : updatedUser.counter});
+                })
+
               }
-            })
-          }
+            }
+          if(!flag){
+           user.counter++;
+           user.usersRating.push({username : from , rating : reflection});
+           user.save(function(err , updatedUser){
+            var total = 0;
+            for(var i = 0; i < updatedUser.usersRating.length; i++){
+              total+= updatedUser.usersRating[i].rating;
+            }
+           var average = total / updatedUser.counter;
+           return res.status(201).send({average : average, counter : updatedUser.counter});
+           }) 
+          }          
         }
       })
           // when user post a pairReflect of 5 

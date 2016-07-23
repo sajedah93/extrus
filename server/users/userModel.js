@@ -14,10 +14,10 @@ var userSchema = new Schema({
 	firstName  : { type : String , required: true } , 
 	lastName : { type : String , required: true } ,
 	age : { type : Number } , 
+  usersRating : {type : Array},
 	cohortNumber : { type: Number , required: true },
 	image : {type : String }  ,
 	About : { type : String } ,  
-	pairReflect :  {type : Number},
   counter : {type: Number}, //  This is a new counter that counts how many students reflect to this Student
   gitHub:  {type : String},
   employed : {type : Boolean},

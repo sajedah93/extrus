@@ -19,13 +19,13 @@ angular.module('RBKme.newBlog', [])
 
 		$scope.filled = true;
 		if(!$scope.blog.title || !$scope.blog.blog){
-			handleInputs($scope,'Please fill all fields');
+			handleBlogInputs($scope,'Please fill all fields');
 		} else {
 			$scope.blog.username = window.username;
 			Blogs.addOne($scope.blog)
 			.then(function(response){
 				if(response.status === 200){
-					clearInputBoxes($scope);
+					clearBlogInputBoxes($scope);
 					$mdDialog.hide();
 				} else {
 					alert('Something Went Wrong, Please Try Again!');
@@ -39,14 +39,14 @@ angular.module('RBKme.newBlog', [])
 
 });
 	
-var handleInputs = function($scope, msg){
-	clearInputBoxes($scope);
+var handleBlogInputs = function($scope, msg){
+	clearBlogInputBoxes($scope);
 	$scope.filled = false;
 	$scope.errorMsg = msg;
 };
 
 // function to clear the input boxes
-var clearInputBoxes = function($scope) {
+var clearBlogInputBoxes = function($scope) {
 	$scope.blog.username = '';
 	$scope.blog.title = '';
 	$scope.blog.blog = '';

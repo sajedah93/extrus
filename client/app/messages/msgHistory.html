@@ -1,0 +1,38 @@
+<md-dialog aria-label="MsgHistory"  ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools myToolbar">
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <br>
+    <md-dialog-content>
+
+        <table>
+        <tbody ng-repeat="msg in data.msgs">
+          <tr ng-if="msg.from===user.username">
+            <td class="col-lg-6"></td>
+            <td>
+              <h4 class="msgText col-lg-8 col-md-8 col-sm-8"  style="text-align: right;">{{msg.text}}</h4>
+              <img src="{{user.image}}" class="msgPic img-circle col-lg-4 col-md-4 col-sm-4"/>
+            </td>
+          </tr>
+          <tr ng-if="msg.from===friend.username">
+            <td>
+              <img src="{{friend.image}}" class="msgPic img-circle col-lg-4 col-md-4 col-sm-4"/>
+              <h4 class="msgText col-lg-8 col-md-8 col-sm-8">{{msg.text}}</h4>
+            </td>
+            <td class="col-lg-6"></td>
+          </tr>
+        </tbody>
+        </table>
+
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="cancel()">
+       Close
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

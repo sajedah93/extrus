@@ -12,6 +12,8 @@ module.exports = function(app, express){
 	app.post('/api/users', userController.newUser);
 	app.post('/api/users/forget', userController.forgetPassUser);
 	app.post('/api/users/editProfile', userController.editProfile);
+	app.get('/api/users/:id', userController.getOne);
+
 
 
 	// Pair Reflect Post
@@ -21,6 +23,7 @@ module.exports = function(app, express){
 	// Two Posts for getting the messages and sending the message
 	app.post('/api/users/sendMessage', messageController.sendMessage);
 	app.post('/api/users/getMessages', messageController.getMessage);
+	app.post('/api/users/getUserMessagedFriends', messageController.getUserMessagedFriends);
 
 	// app.get('/api/users/getMessages', messageController.getAllMessages); just for testing
 

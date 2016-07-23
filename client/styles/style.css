@@ -1,11 +1,3 @@
-/*body {background-image: url('/assets/group.jpg') ; 
-
-
- }
-*/
-
-
-
 
 .Btn {
    background-color: #B51A82;
@@ -253,4 +245,10 @@ filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
 }
 .header div ul li ul li:first-child {
   background-color:#black;
+}
+.msgPic {
+  width: 15%;
+}
+.msgText {
+  margin-top: 14%;
 }

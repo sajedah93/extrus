@@ -4,6 +4,7 @@ angular.module('RBKme', [
   'RBKme.newBlog',
   'RBKme.Msg',
   'RBKme.newMsg',
+  'RBKme.msgHistory',
   'RBKme.profileView',
   'RBKme.profileEdit',
   'RBKme.home',
@@ -11,7 +12,8 @@ angular.module('RBKme', [
   'RBKme.admin',
   'ngRoute',
   'ngMaterial',
-  'ngAnimate'
+  'ngAnimate',
+  'jkAngularRatingStars'
 ])
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider

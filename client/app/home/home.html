@@ -8,7 +8,9 @@
    <center> <div style="padding: 4em" class="st_thumbs_wrapper li-first ">
      <div class="st_thumbs "
             ng-repeat="user in data.users | filter:search">
-            <img class='img-circle' src="{{user.image}}" ng-click="showProfile($event,user)" style="width:20% ;">
+
+            <img ng-src="{{user.image}}" ng-click="showProfile($event,user)" style="width:20%">
+
             <br><br>
     	</div> <center>
     </div>

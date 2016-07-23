@@ -1,0 +1,44 @@
+<md-dialog aria-label="Msg"  ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools myToolbar">
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <br>
+    <md-dialog-content>
+
+        <h3>
+        <div>
+          <input type='text' ng-model='search' placeholder='filter'/>
+        </div>
+        <div>
+          <label for="to" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;To</label>
+          <select ng-model="msg.to">
+            <option ng-repeat="friend in friends | filter:search"  value="{{friend.username}}">{{friend.firstName + ' ' + friend.lastName}}</option>
+          </select>
+        </div>
+        <div>
+          <label for="text" class="editLabel">&nbsp;&nbsp;&nbsp;&nbsp;Text</label>
+          <textarea rows="10" cols="60" name="text" ng-model="msg.text" placeholder="Enter your content here"
+          value="{msg.msg}" class="editInput"> 
+          </textarea><br><br>
+        </div>
+        <div>
+          <br>
+          <label ng-show="filled===false" ng-hide="filled===true" style="color:red;">{{errorMsg}}</label>
+        </div>
+        </h3>
+
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="answer()">
+       Send
+      </md-button>
+      <md-button ng-click="cancel()">
+       Cancel
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
