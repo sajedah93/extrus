@@ -4,11 +4,9 @@ angular.module('RBKme.home', [])
   $scope.status = '  ';
   $scope.data = {};
 
-  
-  $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
-
   // initalize function to get all the users from the database
   $scope.initalize = function(){
+    // getting all the users and storing them in the $scope.data
     Users.getAll()
     .then(function(users){
       $scope.data.users = users;
@@ -20,6 +18,9 @@ angular.module('RBKme.home', [])
 
   // function to show a single profile in a pop-up upon clicking on a profile pic
   $scope.showProfile = function(ev,user) {
+    // for more info about the parameters we're passing here
+    // check the documentation in the showDialog function
+    // in the Dialogs factory in the services.js file
     Dialogs.showDialog($scope,$mdDialog,$mdMedia,
       'profileViewController','app/profile/profileView.html',ev,
       {user:user},function(answer){
@@ -32,6 +33,9 @@ angular.module('RBKme.home', [])
   };
 
   $scope.editProfile = function(ev,user) {
+    // for more info about the parameters we're passing here
+    // check the documentation in the showDialog function
+    // in the Dialogs factory in the services.js file
     Dialogs.showDialog($scope,$mdDialog,$mdMedia,
       'profileEditController','app/profile/profileEdit.html',ev,
       {user:user},function(answer){

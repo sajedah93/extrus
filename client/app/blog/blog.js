@@ -13,6 +13,7 @@ angular.module('RBKme.blog', [])
 			$scope.data.blogs = blogs;
 			Users.getAll()
 			.then(function(users){
+				// getting the image and fullname for each user to add it to the blog
 				for(var i=0; i<$scope.data.blogs.length; i++){
 					for(var j=0; j<users.length; j++){
 						if($scope.data.blogs[i].from === users[j].username){
@@ -31,10 +32,11 @@ angular.module('RBKme.blog', [])
 			console.log(errors);
 		});
 	};
-
-	$scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
 	
 	$scope.addPost = function(ev) {
+    // for more info about the parameters we're passing here
+    // check the documentation in the showDialog function
+    // in the Dialogs factory in the services.js file
 	  Dialogs.showDialog($scope,$mdDialog,$mdMedia,
       'newBlogController','app/blog/newBlog.html',ev,
       {},function(answer){

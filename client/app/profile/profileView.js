@@ -62,6 +62,9 @@ angular.module('RBKme.profileView', [])
   
   window.onunload = unloadPage;
 
+  // function to check if the user viewing the profile is the same user
+  // logged in, to know whether to give him access or not to the
+  // profile edit functionality
 	$scope.sameUser = function(){
 		var token = $window.localStorage.getItem('com.RBKme');
 		if(!token){

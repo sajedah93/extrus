@@ -3,8 +3,9 @@ var mongoose = require('mongoose');
 
 var app = express();
 
- var mongoURI =  process.env.CUSTOMCONNSTR_MONGOLAB_URI || 'mongodb://localhost/extrus';
- var port = process.env.PORT || 8000;
+var mongoURI =  process.env.MONGODB_URI || 'mongodb://localhost/extrus';
+
+var port = process.env.PORT || 8000;
 // connect to mongo database named "extrus"
 mongoose.connect(mongoURI);
 

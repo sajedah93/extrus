@@ -49,6 +49,7 @@ angular.module('RBKme.services', [])
     });
   }
 
+  // function to edit the pairReflection for a single user
   var updatePair = function(user){
     return $http({
       method: 'POST', 
@@ -59,6 +60,7 @@ angular.module('RBKme.services', [])
     })
   }
 
+  // function to delete a user
   var deleteOne = function(user){
     return $http({
       method : 'POST', 
@@ -112,23 +114,30 @@ angular.module('RBKme.services', [])
   // function to show the dialogs
   var showDialog = function($scope,$mdDialog,$mdMedia,controller,htmlTemplate,event,paramsObj,successCB,failureCB){
 
+    // variable to make the pop-up get the max size always
+    // in a way to look good for the user
     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $scope.customFullscreen;
+    
+    // calling $mdDialog.show to show a pop-up
     $mdDialog.show({
-      controller: controller,
-      templateUrl: htmlTemplate,
-      parent: angular.element(document.body),
+      controller: controller, // we pass here the handling of the pop-up to a specific controller
+      templateUrl: htmlTemplate, // we pass here the html template that's gonna be displayed in the pop-up
+      parent: angular.element(document.body), // we pass here the parent window so when we close the pop-up we get redirected back to the parent
       targetEvent: event,
-      locals: paramsObj,
+      locals: paramsObj, // we pass here parameters if any to the controller
       clickOutsideToClose:true,
       fullscreen: useFullScreen
     })
     .then(function(answer) {
+      // callback to be executed when we close the pop-up
       successCB(answer);
 
     }, function() {
+      // callback to be executed in case of an error
       failureCB();
     });
 
+    // keep watching the browser's size to make the pop-up responsive
     $scope.$watch(function() {
       return $mdMedia('xs') || $mdMedia('sm');
     }, function(wantsFullScreen) {
@@ -143,6 +152,8 @@ angular.module('RBKme.services', [])
 
 })
 .factory('Messages', function ($http) {
+
+  // function to send a new message
   var sendMessage = function (msg) {
     return $http({
       method: 'POST',
@@ -154,6 +165,7 @@ angular.module('RBKme.services', [])
     });
   };
   
+  // function to get a list of the messaged friends for a specific user
   var getMessagedFriends = function (user) {
     return $http({
       method: 'POST',
@@ -165,6 +177,7 @@ angular.module('RBKme.services', [])
     });
   };
   
+  // function to get all messages between two users
   var getMessages = function (fromTo) {
     return $http({
       method: 'POST',

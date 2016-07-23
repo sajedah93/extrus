@@ -4,11 +4,12 @@ angular.module('RBKme.admin', [])
   	$scope.user = {};
   	$scope.admin = {};
 
-  	// a flag to know if we should give access or not to add users
+  	// a flag to know if we should give access or not for the admin to add users
   	$scope.giveAccess = false;
 
   	$scope.showError = false;
   	
+    // logging in the user and checking for the credentials
   	$scope.login = function(){
   		$scope.showError = false;
   		if( $scope.admin.username === 'admin' && $scope.admin.password === 'P@SSW0RD' ){
@@ -21,7 +22,8 @@ angular.module('RBKme.admin', [])
   		$scope.admin.password = '';
   	}
 
-	$scope.addUser = function(){
+    // a function the admin can use to add users to the database
+  	$scope.addUser = function(){
 		$scope.user.cohortNumber = parseInt($scope.user.cohortNumber);
 		Users.addOne($scope.user)
 		.then(function(response){
