@@ -1,6 +1,6 @@
 angular.module('RBKme.msgHistory', [])
 
-.controller('msgHistoryController', function ($scope, $mdDialog, Messages, Users, fromToObj) {
+.controller('msgHistoryController', function ($scope, $mdDialog, Messages, Users, fromToObj , $route) {
 
 	$scope.data = {};
 	$scope.user = {};
@@ -41,6 +41,25 @@ angular.module('RBKme.msgHistory', [])
 			console.log(error);
 		});
 	}
+
+	setInterval(function(){
+		$scope.initalize();
+	},500)
+
+    $scope.myFunc = function (text) {
+      var sendObject = {
+      	from : window.username , 
+      	to : $scope.friend.username ,
+      	text : text
+      }
+
+      Messages.sendMessage(sendObject).then(function(response){
+      	console.log(response);
+      	$scope.initalize();	
+      })
+      $scope.textReply = '';
+  	}
+
 
 	$scope.hide = function() {
     	$mdDialog.hide();
